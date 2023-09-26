@@ -1,24 +1,68 @@
 <template>
 	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view class="text-area">
-			<text class="title">{{title}}</text>
+		<view class="head-box"></view>
+		<view class="content-box">
+			<view class="content-left-box">
+				<view v-for="(item,index) in leftList" :key="index" :style="{'background-image':`url(${item.bgImage})`}"
+					class="item-left-box">
+
+				</view>
+			</view>
+			<view class="content-right-box">
+				<SpiSwitch></SpiSwitch>
+				<view v-for="(item,index) in rightList" :key="index"
+					:style="{'background-image':`url(${item.bgImage})`}" class="item-right-box" @click="urlTo(item.url)">
+
+				</view>
+			</view>
 		</view>
 	</view>
 </template>
 
 <script>
+	import SpiSwitch from '@/components/SpiSwitch/SpiSwitch.vue'
 	export default {
+		components: {
+			SpiSwitch
+		},
 		data() {
 			return {
-				title: 'Hello'
+				leftList: [{
+						bgImage: '/static/7.jpg',
+						url: ''
+					},
+					{
+						bgImage: '/static/4.jpg',
+						url: ''
+					}, {
+						bgImage: '/static/2.jpg',
+						url: ''
+					}
+				],
+				rightList: [{
+						bgImage: '/static/3.jpg',
+						url: ''
+					},
+					{
+						bgImage: '/static/9.jpg',
+						url: ''
+					},
+					{
+						bgImage: '/static/7.jpg',
+						url: ''
+					}
+				]
 			}
 		},
 		onLoad() {
 
 		},
 		methods: {
-
+			urlTo(url) {
+				uni.navigateTo({
+					url
+				})
+			}
 		}
 	}
 </script>
@@ -31,22 +75,32 @@
 		justify-content: center;
 	}
 
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
+	.head-box {
+		background-image: url(/static/6.jpg);
+		width: 100vw;
+		height: 600rpx;
 	}
 
-	.text-area {
+	.content-box {
 		display: flex;
-		justify-content: center;
+		justify-content: space-between;
+		margin-top: 30rpx;
 	}
 
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
+	.content-left-box,
+	.content-right-box {
+		width: 50vw;
+	}
+
+	.item-left-box,.item-right-box {
+		height: 300rpx;
+		margin: 36rpx;
+		border-radius: 10rpx;
+	}
+	.item-right-box{
+		margin-left: 20rpx;
+	}
+	.item-left-box{
+		margin-right: 20rpx;
 	}
 </style>
