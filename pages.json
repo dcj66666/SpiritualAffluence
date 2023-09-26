@@ -13,6 +13,14 @@
                 "navigationBarTitleText": "",
                 "enablePullDownRefresh": false
             }
+        }
+        ,{
+            "path" : "pages/wooden-fish/wooden-fish",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "电子木鱼",
+                "enablePullDownRefresh": false
+            }
             
         }
     ],
